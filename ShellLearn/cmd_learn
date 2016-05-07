@@ -1,0 +1,32 @@
+#!/bin/sh
+
+echo "create test1 dir"
+mkdir  test1
+
+if [ -d test1 ] 
+then 
+	echo "test1 dir exist"
+else
+	echo "test1 dir create failed"
+fi
+
+echo " create filetest"
+touch filetest
+
+if [ -f filetest ]
+then 
+	echo "filetest exist"
+else
+	echo "filetest create failed"
+fi 
+
+echo "delete test1 fieltest"
+
+rm -rf  test1 filetest
+
+if [ -d test1 ] || [ -f filetest ]
+then 
+	echo "rm failed"
+else
+	echo "rm success"
+fi

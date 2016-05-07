@@ -21,4 +21,13 @@ case "$sex" in
 
 esac
 
+echo "Are you woman? Please answer yes or no ?"
+read sex2
+
+case "$sex2" in
+  [yY] | [Yy][Ee][Ss])	echo "Hi Woman";;
+  [nN]*)		echo "Hi Man";;
+  *)			echo "Sorry, answer not recognized";;
+esac
+
 exit 0
