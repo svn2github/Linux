@@ -30,3 +30,38 @@ then
 else
 	echo "rm success"
 fi
+
+#learn shitf cmd
+echo "Use shift to change param vars"
+while [ "$1" != "" ]
+do
+	echo "$1"
+	shift
+done
+
+#learn trap 用于在接收到信号将要采取的行动
+trap 'rm -f /tmp/my_tmp_file_$$' INT
+echo creating file /tmp/my_tmp_file_$$
+date > /tmp/my_tmp_file_$$
+
+echo "press interrupt [Ctrl + C ] to interrupt...."
+while [ -f /tmp/my_tmp_file_$$ ]
+do
+	echo File exists
+	sleep 1
+done
+echo The file no longer exists
+
+trap INT
+echo creating file /tmp/mytmp_file_$$
+date > /tmp/my_tmp_file_$$
+
+echo "press interrupt [Ctrl + C ] to interrupt...."
+while [ -f /tmp/my_tmp_file_$$ ]
+do
+	echo File exists
+	sleep 1
+done
+
+echo we never get here
+exit 0
